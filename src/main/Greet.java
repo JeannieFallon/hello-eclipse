@@ -7,24 +7,29 @@ import object.Greeter;
 public class Greet {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
 		
+		String name = new String();
+		int number = 0;
 		Scanner in = new Scanner(System.in);
 		
 		System.out.println("Hello!");
 		System.out.println("What is your name?");
 		
-		String user = in.next();
+		name = in.next();
 		
-		System.out.println("Choose a number between one and ten.");
-		
-		int number = in.nextInt();
+		do {
+			System.out.println("Enter a number between one and ten.");
+			while(!in.hasNextInt()) {
+				System.out.println("Invalid input. Enter a number between one and ten.");
+				in.next();
+			}
+			number = in.nextInt();
+		} while(number < 1 || number > 10);
 		
 		in.close();
-
-		Greeter greeter = new Greeter(number);
 		
-		greeter.sayHi(user);
+		Greeter greeter = new Greeter(number);
+		greeter.sayHi(name);
 
 	}
 
